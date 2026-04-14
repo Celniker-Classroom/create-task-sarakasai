@@ -2,12 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quartle</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Your html goes here...</h1>
-    <br>See the <a href="README.md">README</a> for project details
+
+    <h1>Quartle</h1>
+    <p class="description">A 4-letter version of the classic Wordle game.</p>
+    
+    <div id="game-board" class="board">
+        <div class="box" id="box-0-0"></div>
+        <div class="box" id="box-0-1"></div>
+        <div class="box" id="box-0-2"></div>
+        <div class="box" id="box-0-3"></div>
+        
+        <div class="box" id="box-1-0"></div>
+        <div class="box" id="box-1-1"></div>
+        <div class="box" id="box-1-2"></div>
+        <div class="box" id="box-1-3"></div>
+        
+        <div class="box" id="box-2-0"></div>
+        <div class="box" id="box-2-1"></div>
+        <div class="box" id="box-2-2"></div>
+        <div class="box" id="box-2-3"></div>
+        
+        <div class="box" id="box-3-0"></div>
+        <div class="box" id="box-3-1"></div>
+        <div class="box" id="box-3-2"></div>
+        <div class="box" id="box-3-3"></div>
+        
+        <div class="box" id="box-4-0"></div>
+        <div class="box" id="box-4-1"></div>
+        <div class="box" id="box-4-2"></div>
+        <div class="box" id="box-4-3"></div>
+    </div>
+
+    <div class="input-area">
+        <div class="input-row">
+            <input type="text" id="guess-0" class="letter-input" maxlength="1">
+            <input type="text" id="guess-1" class="letter-input" maxlength="1">
+            <input type="text" id="guess-2" class="letter-input" maxlength="1">
+            <input type="text" id="guess-3" class="letter-input" maxlength="1">
+        </div>
+        <button id="submit-btn">Submit Guess</button>
+    </div>
+
+    <div id="message"></div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
