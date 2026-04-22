@@ -10,7 +10,7 @@
 <body>
     <h1>GPA Calculator</h1>
 
-    <p>Select your letter grade and click the Add Grade button.</p>
+    <p>Select your letter grade, check the box if it is a weighted class, and click the Add Grade button.</p>
     
     <select id="grade-dropdown">
         <option value="A">A</option>
@@ -20,13 +20,16 @@
         <option value="F">F</option>
     </select>
     
+    <input type="checkbox" id="weighted-checkbox">
+    <label for="weighted-checkbox">Weighted</label>
+    
     <button id="add-btn">Add Grade</button>
 
     <br><br>
 
     <h3>Grades Entered:</h3>
     <ul id="grades-display">
-        </ul>
+    </ul>
 
     <button id="calc-btn">Calculate Final GPA</button>
     

@@ -1,20 +1,33 @@
 //list
 let grades = []; 
 
-//grade dropdown
 document.getElementById("add-btn").addEventListener("click", function() {
     
     let grade = document.getElementById("grade-dropdown").value;
-    grades.push(grade);
+    let weighted = document.getElementById("weighted-checkbox").checked;
+    
+    grades.push({
+        letterGrade: grade,
+        weighted: weighted
+    });
     
     let outputList = document.getElementById("grades-display");
-    outputList.innerHTML = outputList.innerHTML + "<li>" + grade + "</li>";
+    
+    let displayWithWGrade = grade;
+    if (weighted) {
+        displayWithWGrade = displayWithWGrade + " (Weighted)";
+    }
+    
+    outputList.innerHTML = outputList.innerHTML + "<li>" + displayWithWGrade + "</li>";
+    
+    document.getElementById("weighted-checkbox").checked = false;
 });
+
 //calculate + display GPA
 document.getElementById("calc-btn").addEventListener("click", function() {
     
     let calculatedGPA = calcGPA(grades);
-    document.getElementById("gpa-result").innerHTML = calculatedGPA;
+    document.getElementById("gpa-result").innerHTML = calculatedGPA.toFixed(2);
 });
 
 function calcGPA(list) {
@@ -29,19 +42,27 @@ function calcGPA(list) {
     // letter to number gpa
     for (let i = 0; i < list.length; i++) {
         
-        let letter = list[i];
+        let letter = list[i].letterGrade;
+        let weighted = list[i].weighted;
+        let currentClassPoints = 0;
         
         if (letter === "A") {
-            totalPoints = totalPoints + 4;
+            currentClassPoints = 4;
         } else if (letter === "B") {
-            totalPoints = totalPoints + 3;
+            currentClassPoints = 3;
         } else if (letter === "C") {
-            totalPoints = totalPoints + 2;
+            currentClassPoints = 2;
         } else if (letter === "D") {
-            totalPoints = totalPoints + 1;
+            currentClassPoints = 1;
         } else {
-            totalPoints = totalPoints + 0; 
+            currentClassPoints = 0; 
         }
+        
+        if (weighted === true && currentClassPoints >= 2) {
+            currentClassPoints = currentClassPoints + 1;
+        }
+        
+        totalPoints = totalPoints + currentClassPoints;
     }
     
     // Calculate and return average
