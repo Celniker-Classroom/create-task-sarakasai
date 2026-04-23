@@ -11,16 +11,9 @@ document.getElementById("add-btn").addEventListener("click", function() {
         weighted: weighted
     });
     
-    let outputList = document.getElementById("grades-display");
-    
-    let displayWithWGrade = grade;
-    if (weighted) {
-        displayWithWGrade = displayWithWGrade + " (Weighted)";
-    }
-    
-    outputList.innerHTML = outputList.innerHTML + "<li>" + displayWithWGrade + "</li>";
-    
     document.getElementById("weighted-checkbox").checked = false;
+    
+    updateDisplay();
 });
 
 //calculate + display GPA
@@ -29,6 +22,32 @@ document.getElementById("calc-btn").addEventListener("click", function() {
     let calculatedGPA = calcGPA(grades);
     document.getElementById("gpa-result").innerHTML = calculatedGPA.toFixed(2);
 });
+
+//I asked gemini on how to add a delete button to each item in the list, it wasn't able to give me a link to the conversation, but I had a general idea on how to create it, but I had no idea how to create an option for each item on the list
+
+function updateDisplay() {
+    let outputList = document.getElementById("grades-display");
+    
+    outputList.innerHTML = ""; 
+
+    for (let i = 0; i < grades.length; i++) {
+        
+        let displayWithWGrade = grades[i].letterGrade;
+        if (grades[i].weighted) {
+            displayWithWGrade = displayWithWGrade + " (Weighted)";
+        }
+       
+        let listItemHTML = "<li>" + displayWithWGrade + 
+            " <button onclick='deleteGrade(" + i + ")'>Delete</button></li>";
+            
+        outputList.innerHTML = outputList.innerHTML + listItemHTML;
+    }
+}
+
+function deleteGrade(indexToRemove) {
+    grades.splice(indexToRemove, 1); 
+    updateDisplay(); 
+}
 
 function calcGPA(list) {
     
