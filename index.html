@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPA Calculator</title>
+    <title>Cute GPA Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <h1>GPA Calculator</h1>
 
-    <p>Select your letter grade, check the box if it is a weightedclass, and click the Add Grade button.</p>
-    
-    <select id="grade-dropdown">
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="F">F</option>
-    </select>
-    
-    <input type="checkbox" id="weighted-checkbox">
-    <label for="weighted-checkbox">Weighted</label>
-    
-    <button id="add-btn">Add Grade</button>
+    <div class="container">
+        <h1>GPA Calculator</h1>
+        <p>Select your letter grade, check for a weighted class, and add it to your list!</p>
+        
+        <div class="input-group">
+            <div class="input-row">
+                <select id="grade-dropdown">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                </select>
+                
+                <label class="checkbox-label">
+                    <input type="checkbox" id="weighted-checkbox">
+                    Weighted
+                </label>
+            </div>
+            
+            <button id="add-btn">Add Grade</button>
+        </div>
 
-    <br><br>
+        <h3>Grades Entered:</h3>
+        <ul id="grades-display">
+            </ul>
 
-    <h3>Grades Entered:</h3>
-    <ul id="grades-display">
-    </ul>
-
-    <button id="calc-btn">Calculate Final GPA</button>
-    
-    <h2>Your GPA is: <span id="gpa-result">0.00</span></h2>
+        <div class="action-buttons">
+            <button id="calc-btn">Calculate Final GPA</button>
+            <button id="clear-btn">Clear All</button>
+        </div>
+        
+        <h2>Your GPA is: <span id="gpa-result">0.00</span></h2>
+    </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>

@@ -23,6 +23,17 @@ document.getElementById("calc-btn").addEventListener("click", function() {
     document.getElementById("gpa-result").innerHTML = calculatedGPA.toFixed(2);
 });
 
+//clear button
+
+document.getElementById("clear-btn").addEventListener("click", function() {
+    
+    grades = []; 
+    
+    updateDisplay(); 
+    
+    document.getElementById("gpa-result").innerHTML = "0.00"; 
+});
+
 //I asked gemini on how to add a delete button to each item in the list, it wasn't able to give me a link to the conversation, but I had a general idea on how to create it, but I had no idea how to create an option for each item on the list
 
 function updateDisplay() {
